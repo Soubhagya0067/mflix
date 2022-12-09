@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import { InferGetServerSidePropsType } from 'next'
+import { useState } from 'react'
+
 
 export async function getServerSideProps() {
+  // const [arr, setarray] = useState([])
   try {
-    await clientPromise
+    // await clientPromise
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -13,7 +16,16 @@ export async function getServerSideProps() {
     //
     // Then you can execute queries against your database like so:
     // db.find({}) or any of the MongoDB Node Driver commands
+    // const client = await clientPromise
+    // const db = client.db("ecommerce");
 
+    //    const movies = await db
+    //        .collection("users")
+    //        .find({})
+    //        .limit(10)
+    //        .toArray();
+
+      //  res.json(movies);
     return {
       props: { isConnected: true },
     }
@@ -28,6 +40,7 @@ export async function getServerSideProps() {
 export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+
   return (
     <div className="container">
       <Head>
@@ -39,7 +52,7 @@ export default function Home({
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
         </h1>
-
+{/* 
         {isConnected ? (
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
@@ -47,7 +60,7 @@ export default function Home({
             You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
             for instructions.
           </h2>
-        )}
+        )} */}
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
