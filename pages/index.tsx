@@ -16,14 +16,16 @@ export async function getServerSideProps() {
     //
     // Then you can execute queries against your database like so:
     // db.find({}) or any of the MongoDB Node Driver commands
-    // const client = await clientPromise
-    // const db = client.db("ecommerce");
+    const client = await clientPromise
+    const db = client.db("ecommerce");
 
-    //    const movies = await db
-    //        .collection("users")
-    //        .find({})
-    //        .limit(10)
-    //        .toArray();
+       const movies = await db
+           .collection("users")
+           .find({})
+           .limit(10)
+           .toArray();
+
+           console.log(movies)
 
       //  res.json(movies);
     return {
@@ -52,7 +54,7 @@ export default function Home({
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
         </h1>
-{/* 
+
         {isConnected ? (
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
@@ -60,7 +62,7 @@ export default function Home({
             You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
             for instructions.
           </h2>
-        )} */}
+        )}
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
